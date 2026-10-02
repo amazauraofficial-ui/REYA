@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-cinzel: 'Cinzel', serif;
+    --font-script: 'Alex Brush', cursive;
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+.font-serif-luxury {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-script {
+  font-family: 'Alex Brush', cursive;
+}
+
+.font-italianno {
+  font-family: 'Italianno', cursive;
+}
+
+.font-sans-clean {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Organic curved pebble shapes matching Image 1 & 2 */
+.pebble-hero {
+  border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+}
+
+.pebble-hero:hover {
+  border-radius: 55% 45% 50% 50% / 50% 50% 50% 50%;
+  transition: border-radius 1.2s ease-in-out;
+}
+
+.pebble-product {
+  border-radius: 45% 55% 40% 60% / 50% 45% 55% 50%;
+}
+
+.pebble-product:hover {
+  border-radius: 50% 50% 45% 55% / 45% 55% 50% 50%;
+  transition: border-radius 1.2s ease-in-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #090e0e;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a3b3a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c6a360;
+}
+

@@ -1,0 +1,43 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    // Default deny all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // User profiles
+    match /users/{userId} {
+      allow read: if isSignedIn();
+      allow write: if isOwner(userId) || (isSignedIn() && request.auth.token.email == "amazauraofficial@gmail.com");
+    }
+
+    // Appointments
+    match /appointments/{appointmentId} {
+      allow read: if true; // Public can check availability, patients can read
+      allow create: if true; // Guests can book appointments online
+      allow update, delete: if isSignedIn();
+    }
+
+    // Clinical Notes & Aftercare
+    match /clinicalNotes/{noteId} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+
+    // Audit Logs
+    match /auditLogs/{logId} {
+      allow read: if isSignedIn();
+      allow create: if true;
+    }
+  }
+}

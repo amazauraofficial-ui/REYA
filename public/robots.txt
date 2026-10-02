@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://reyaspa.netlify.app/sitemap.xml

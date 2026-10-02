@@ -1,0 +1,92 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Authenticated user profile and role definition",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["PATIENT", "PROVIDER", "STAFF", "ADMIN"] },
+        "phone": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Appointment": {
+      "title": "Appointment",
+      "description": "Spa sanctuary and aesthetics appointment reservation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "guestName": { "type": "string" },
+        "guestEmail": { "type": "string" },
+        "guestPhone": { "type": "string" },
+        "serviceTitle": { "type": "string" },
+        "serviceId": { "type": "string" },
+        "date": { "type": "string" },
+        "timeSlot": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["REQUESTED", "PENDING_PAYMENT", "CONFIRMED", "RESCHEDULED", "CHECKED_IN", "COMPLETED", "CANCELLED"]
+        },
+        "price": { "type": "string" },
+        "roomName": { "type": "string" },
+        "providerName": { "type": "string" },
+        "googleCalendarEventId": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["guestName", "serviceTitle", "date", "timeSlot", "status"]
+    },
+    "ClinicalNote": {
+      "title": "ClinicalNote",
+      "description": "Provider treatment record and post-procedure aftercare instructions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "appointmentId": { "type": "string" },
+        "providerId": { "type": "string" },
+        "patientId": { "type": "string" },
+        "procedureDetails": { "type": "string" },
+        "aftercareInstructions": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["appointmentId", "procedureDetails", "aftercareInstructions"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Immutable security and access event log",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "actor": { "type": "string" },
+        "role": { "type": "string" },
+        "action": { "type": "string" },
+        "resource": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "details": { "type": "string" }
+      },
+      "required": ["actor", "action", "resource", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profiles with role assignment"
+    },
+    "/appointments/{appointmentId}": {
+      "schema": { "$ref": "#/entities/Appointment" },
+      "description": "Scheduled appointments and reservations"
+    },
+    "/clinicalNotes/{noteId}": {
+      "schema": { "$ref": "#/entities/ClinicalNote" },
+      "description": "Clinical and treatment aftercare records"
+    },
+    "/auditLogs/{logId}": {
+      "schema": { "$ref": "#/entities/AuditLog" },
+      "description": "Security and compliance audit trail"
+    }
+  }
+}

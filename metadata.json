@@ -1,0 +1,6 @@
+{
+  "name": "REYA Luxury Spa & Wellness Sanctuary",
+  "description": "Immerse in an oasis of serenity with bespoke massage rituals, organic botanical facial treatments, traditional sauna ceremonies, and thermal bathing at REYA Luxury Spa.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

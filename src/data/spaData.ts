@@ -1,12 +1,18 @@
 import { ServiceItem, RitualProgram, GalleryRoom, TestimonialItem } from '../types';
 
-// Real generated high-resolution spa photography
+import heroMassage from '../assets/images/hero_spa_massage_1790829277810.jpg';
+import productsCandles from '../assets/images/spa_products_candles_1790829298132.jpg';
+import serviceFacials from '../assets/images/spa_service_facials_1790829312118.jpg';
+import serviceSauna from '../assets/images/spa_service_sauna_1790829324502.jpg';
+import bathingHall from '../assets/images/spa_bathing_hall_1790829337604.jpg';
+
+// Real generated high-resolution spa photography (ES Module bundled for Netlify & Production)
 export const IMAGES = {
-  heroMassage: '/src/assets/images/hero_spa_massage_1790829277810.jpg',
-  productsCandles: '/src/assets/images/spa_products_candles_1790829298132.jpg',
-  serviceFacials: '/src/assets/images/spa_service_facials_1790829312118.jpg',
-  serviceSauna: '/src/assets/images/spa_service_sauna_1790829324502.jpg',
-  bathingHall: '/src/assets/images/spa_bathing_hall_1790829337604.jpg',
+  heroMassage,
+  productsCandles,
+  serviceFacials,
+  serviceSauna,
+  bathingHall,
 };
 
 export const SERVICES_DATA: Record<'en' | 'ru', ServiceItem[]> = {
